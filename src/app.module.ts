@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
+import { RoomsModule } from "./rooms/rooms.module";
 
 @Module({
   imports: [
@@ -10,7 +11,7 @@ import { AppService } from "./app.service";
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
+      imports: [ConfigModule, RoomsModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: "postgres",
@@ -28,3 +29,5 @@ import { AppService } from "./app.service";
   providers: [AppService],
 })
 export class AppModule {}
+
+

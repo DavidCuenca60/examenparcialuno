@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateRoomsDto } from "./dto/create-room.dto";
+import { CreateRoomDto } from "./dto/create-room.dto";
 import type { Room } from "./entities/room.entity";
 
 @Injectable ()
@@ -28,7 +28,7 @@ export class RoomsService {
     return room;
   }
 
-  create(createRoomsDto: CreateRoomsDto): Room {
+  create(createRoomsDto: CreateRoomDto): Room {
     const newRoom: Room = {
       id: this.rooms.length + 1,
       name: createRoomsDto.name,
